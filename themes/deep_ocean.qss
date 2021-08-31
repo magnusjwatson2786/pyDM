@@ -1,0 +1,252 @@
+QWidget{
+	color:#8590C8;
+	font: 10pt "Segoe UI";
+}
+#frame_12{
+    background-color: #0F111A;
+	border: 1px solid rgb(44,49,58);
+}
+#frame_11{
+	background-color: transparent;
+	image: url(:/images/images/terminal.ico);	
+	image: url(:/icons/icons/cil-transfer.png);
+	background-position: centered;
+	background-repeat: no-repeat;
+	margin-top:0px;
+}
+#frame {
+    background-color: #0E161F;
+	border:0px;
+ 	margin:0px;
+}
+#pushButton_4 {
+    background-color: transparent;
+}
+#frame_3 {
+    background-color: #0F111A;
+	padding-top:0px;
+	padding-right:3px;
+	padding-bottom: 5px; 
+}
+
+#frame_3 .QPushButton { 
+	background-color: rgba(255, 255, 255, 0); border: none;  border-radius: 5px;
+}
+#frame_3 .QPushButton:hover {
+	background-color:#1F2233; border-style: solid; border-radius: 4px; 
+}
+#frame_3 .QPushButton:pressed {
+	 background-color: rgb(23, 26, 30); border-style: solid; border-radius: 4px; 
+}
+#frame_2 {
+    background-color: transparent;
+	border:0px;
+}
+#label{
+	color:#82aaff;
+	font: 11pt "Segoe UI";
+    
+    margin: 10px;
+}
+#frame_4 .QPushButton{
+    font: 8pt "Segoe UI"; color: rgb(189, 147, 249);
+}
+#frame_4 .QPushButton:hover{
+    background-color: rgb(30,30,45);
+}
+#frame_4 .QPushButton:pressed{
+    background-color: rgb(189, 147, 249);
+	color: rgb(255, 255, 255);
+}
+#frame_7{
+	margin-right:0px;
+	border:0px;
+	padding-right:0px;
+}
+#frame_7 .QPushButton {	
+	background-position: left center;
+    background-repeat: no-repeat;
+	border: none;
+	border-left: 15px solid transparent;
+	border-right: 0px;
+	margin-right:0px;
+	background-color: transparent;
+	text-align: left;
+	padding-left: 44px;
+}
+#frame_7 .QPushButton:hover {
+	background-color:#1F2233;
+	color:#DDDDDD;
+}
+#frame_7 .QPushButton:pressed {	
+	background-color: #1E3250;
+	color: rgb(255, 255, 255);
+}
+#frame_6 {
+	 background-color: transparent;
+	 padding-top:10px;
+} 
+#label_3{
+	color:#82aaff;
+	 font: 63 12pt "Segoe UI Semibold"; 
+}
+#label_4{
+	font: 8pt "Segoe UI";
+	color: rgb(189, 147, 249);
+}
+#frame_5 {
+	 background-color: #1D222B; 
+}
+#frame_5 QLabel { 
+	font-size: 11px; color: 
+	rgb(113, 126, 149);
+	padding-left: 10px; 
+	padding-right: 10px; 
+	padding-bottom: 2px; 
+}
+#frame_15 QLabel { 
+	font-size: 11px; color: 
+	rgb(113, 126, 149);
+	padding-left: 10px; 
+	padding-right: 10px; 
+	padding-bottom: 2px; 
+}
+QPushButton#pushButton_6:hover {
+	background-color:rgb(22,160,255); color:#DDDDDD;
+}
+QPushButton#pushButton_6:pressed {
+	 background-color:rgb(22,160,255); color: rgb(255, 255, 255);
+}
+
+#pushButton .QPushButton:hover {
+	background-color:#962128; border-style: solid; border-radius: 4px; 
+}
+#pushButton .QPushButton:pressed {
+	 background-color: rgb(23, 26, 30); border-style: solid; border-radius: 4px; 
+}
+
+#frame_14 .QListWidget::item, QListWidget::item:hover, QListWidget::item:selected {
+	background-color:#0B0D16;
+	border: 3px solid #0A0C15;}
+/*	
+#frame_14 .QScrollBar:vertical {
+	border: none;
+	background-color: rgb(242, 47, 130);
+	width:7px;
+	margin: 0px 0px 0px 0px;
+}
+#frame_14 .QScrollBar::handle:vertical {
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+	stop: 0 rgb(133,144,200), stop: 0.5 rgb(133,144,200), stop:1 rgb(133,144,200));
+	min-height: 0px;
+}
+#frame_14 .QScrollBar::add-line:vertical {
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+	stop: 0 rgb(242, 47, 130), stop: 0.5 rgb(32, 47, 130),  stop:1 rgb(32, 47, 250));
+	height: 0px;
+	subcontrol-position: bottom;
+	subcontrol-origin: margin;
+}
+#frame_14 .QScrollBar::sub-line:vertical {
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+	stop: 0  rgb(32, 47, 130), stop: 0.5 rgb(32, 47, 130),  stop:1 rgb(32, 47, 130));
+	height: 0 px;
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+}
+*/
+#tabWidget::pane{
+	background: transparent;
+	border:0;
+}
+#frame_4 .QTabBar::tab {
+    background: transparent;
+	border: 1px solid rgb(44,49,58);
+}
+
+#frame_14 .QScrollBar:vertical {
+	border: none;
+	background: rgb(52, 59, 72);
+	width: 7px;
+	margin: 11px 0 11px 0;
+	/*border-radius: 0px;*/
+}
+#frame_14 .QScrollBar::handle:vertical {	
+	background: rgb(22,160,255);
+	min-height: 25px;
+	/*border-radius: 4px*/
+}
+#frame_14 .QScrollBar::add-line:vertical {
+	border: none;
+	background: rgb(55, 63, 77);	
+	height: 10px;
+	/*border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;*/
+	subcontrol-position: bottom;
+	subcontrol-origin: margin;
+}
+#frame_14 .QScrollBar::sub-line:vertical {
+	border: none;
+	background: rgb(55, 63, 77);
+	height: 10px;
+	/*border-top-left-radius: 4px;
+	border-top-right-radius: 4px;*/
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+}
+#frame_14 .QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+	background: none;
+}
+
+#frame_14 .QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	background: none;
+}
+
+#frame_14 .QScrollBar:horizontal {
+	border: none;
+	background: rgb(52, 59, 72);
+	height: 7px;
+	margin:0 11px 0 11px;
+	/*border-radius: 0px;*/
+}
+#frame_14 .QScrollBar::handle:horizontal {	
+	background: rgb(22,160,255);
+	min-width: 25px;
+	/*border-radius: 4px*/
+}
+#frame_14 .QScrollBar::add-line:horizontal {
+	border: none;
+	background: rgb(55, 63, 77);	
+	width: 10px;
+	/*border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;*/
+	subcontrol-position: right;
+	subcontrol-origin: margin;
+}
+#frame_14 .QScrollBar::sub-line:horizontal {
+	border: none;
+	background: rgb(55, 63, 77);
+	width: 10px;
+	/*border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;*/
+	subcontrol-position: left;
+	subcontrol-origin: margin;
+}
+#frame_14 .QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {
+	background: none;
+}
+
+#frame_14 .QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+	background: none;
+}
+#frame_15 .QPushButton:hover {
+	background-color:#1F2233;
+	color:#DDDDDD;
+}
+#frame_15 .QPushButton:pressed {	
+	background-color: #1E3250;
+	color: rgb(255, 255, 255);
+}
+#label_6, #label_9{
+	font: 26pt "Segoe UI";
+}
