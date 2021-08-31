@@ -56,11 +56,7 @@ class MainWindow(QMainWindow):
         #                                 "{background-color:#0B0D16;"
         #                                 "border: 3px solid #0A0C15;}")
         
-        self.add("https://download.zerobrane.com/ZeroBraneStudioEduPack-1.90-win32.exe")
-        # self.add("https://download.zerobrane.com/ZeroBraneStudioEduPack-1.90-win32.exe")
-        # self.add("https://download.zerobrane.com/ZeroBraneStudioEduPack-1.90-win32.exe")
-        # self.add("https://download.zerobrane.com/ZeroBraneStudioEduPack-1.90-win32.exe")
-        # self.add("https://download.zerobrane.com/ZeroBraneStudioEduPack-1.90-win32.exe")
+
 
     def buttonClick(self):
         btn = self.sender()
