@@ -20,6 +20,7 @@ Made using Python and PySide6
 
 ## Screenshots
 ![Alt text](screenshots/img1.png?raw=true "pyDownloadManager")
+![Alt text](screenshots/img2.png?raw=true "pyDownloadManager")
 
 ## Dependencies
 - [Python]
