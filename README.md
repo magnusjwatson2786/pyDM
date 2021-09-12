@@ -1,8 +1,8 @@
-<h1 align="center"> pyDownloadManager </h1>
+<h1 align="center"> pyDM </h1>
 <p align="center">
-<img src="https://img.shields.io/github/repo-size/magnusjwatson2786/pyDownloadManager">
-<img src="https://img.shields.io/github/last-commit/magnusjwatson2786/pyDownloadManager">
-<img src="https://img.shields.io/github/license/magnusjwatson2786/pyDownloadManager">
+<img src="https://img.shields.io/github/repo-size/magnusjwatson2786/pyDM">
+<img src="https://img.shields.io/github/last-commit/magnusjwatson2786/pyDM">
+<img src="https://img.shields.io/github/license/magnusjwatson2786/pyDM">
 </p>
 I got tired of the conventional download managers where finding one with good features, nice UI and being free of cost is impossible.
 
@@ -19,8 +19,8 @@ Made using Python and PySide6
 - Adding Batch/multiple downloads supported (to be added)
 
 ## Screenshots
-![Alt text](screenshots/img1.png?raw=true "pyDownloadManager")
-![Alt text](screenshots/img2.png?raw=true "pyDownloadManager")
+![Alt text](screenshots/img1.png?raw=true "pyDM")
+![Alt text](screenshots/img2.png?raw=true "pyDM")
 
 ## Dependencies
 - [Python]
@@ -31,7 +31,7 @@ Made using Python and PySide6
 ## Run
 To run this program, clone it to your local machine using: 
 ```sh
-git clone https://github.com/magnusjwatson2786/pyDownloadManager.git
+git clone https://github.com/magnusjwatson2786/pyDM.git
 ```
 then cd to the repo directory and hit:.
 ```sh
