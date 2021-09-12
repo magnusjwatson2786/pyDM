@@ -2,7 +2,7 @@ import os, sys
 from cx_Freeze import setup, Executable
 
 setup(
-    name = "pyDownloadManager",
+    name = "pyDM",
     version = "1.0",
     description = "Free multithreaded modern download manager",
     author = "magnusjwatson2786",
