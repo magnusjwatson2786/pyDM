@@ -2,7 +2,7 @@ from PySide6.QtCore import *  # type: ignore
 from PySide6.QtGui import *  # type: ignore
 from PySide6.QtWidgets import *  # type: ignore
 from ui.custom_pb import CustomPb
-import requests, sys, concurrent.futures,time, os, re, platform
+import requests, sys, os, re, platform
 import res_rc
 from ui.ui_dlitem_g import Ui_Form
 verbose=False
@@ -10,13 +10,14 @@ class GUISignal(QObject):
     signal_val = Signal(int)
 
 class Ui_Dlitem(QWidget):
-    def __init__ (self, link:str,lidx:int,myparent = None):
+    def __init__ (self, link:str,path:str,lidx:int,myparent = None):
         # super(Ui_Dlitem, self).__init__(parent)
         QWidget.__init__(self)
         self.itemUI = Ui_Form()
         self.itemUI.setupUi(self)
         if verbose: print("setup")
         self.link = link
+        self.path=path
         self.lidx=lidx
         self.flen=0
         self.csize=512*1024
@@ -33,7 +34,7 @@ class Ui_Dlitem(QWidget):
         self.itemUI.label_2.setText(QCoreApplication.translate("Form", self.filename, None))
         self.itemUI.pushButton.clicked.connect(self.pause)
         self.itemUI.label.setScaledContents(True)
-        self.itemUI.pushButton_3.clicked.connect(lambda: print("delete"))
+        self.itemUI.pushButton_3.clicked.connect(self.delet)
         if verbose: print("ready")
         # self.myparent=myparent
     def checkurl(self,url):
@@ -63,3 +64,7 @@ class Ui_Dlitem(QWidget):
             self.br=False
         else:
             self.br=True
+
+    def delet(self):
+        os.remove(self.path)
+        del self

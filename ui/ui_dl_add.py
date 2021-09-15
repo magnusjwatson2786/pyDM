@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dl_addvNsGGo.ui'
+## Form generated from reading UI file 'dl_addORzXII.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.2
 ##
@@ -19,9 +19,9 @@ class Ui_Addbox(object):
         if not Addbox.objectName():
             Addbox.setObjectName(u"Addbox")
         Addbox.setWindowModality(Qt.ApplicationModal)
-        Addbox.resize(300, 215)
-        Addbox.setMinimumSize(QSize(300, 0))
-        Addbox.setMaximumSize(QSize(16777215, 215))
+        Addbox.resize(355, 300)
+        Addbox.setMinimumSize(QSize(300, 300))
+        Addbox.setMaximumSize(QSize(16777215, 300))
         Addbox.setStyleSheet(u"QWidget{\n"
 "background-color: #0F111A;\n"
 "color:#8590C8;\n"
@@ -31,8 +31,10 @@ class Ui_Addbox(object):
 "	border-color: rgb(12, 86, 156);\n"
 "}\n"
 "#contentframe .QPushButton {	\n"
-"	border: 1px solid rgb(52, 59, 72);\n"
-"	background-color: #0E161F;\n"
+"	/*border: 1px solid rgb(52, 59, 72);\n"
+"	border-radius:2px;\n"
+"	background-color: #27496D;0E161F;*/\n"
+"	background-color: rgb(20, 40, 80);\n"
 "}\n"
 "#contentframe .QPushButton:hover {\n"
 "	background-color:#1F2233;\n"
@@ -53,7 +55,45 @@ class Ui_Addbox(object):
 "QCheckBox::indicator:unchecked:hover {\n"
 "    image:url(:/icons/icons/cil-flip-to-back.png);\n"
 "}\n"
-"")
+"\n"
+"QScrollBar:vertical {\n"
+"	border: none;\n"
+"	background: rgb(52, 59, 72);\n"
+"	width: 7px;\n"
+"	m"
+                        "argin: 11px 0 11px 0;\n"
+"	/*border-radius: 0px;*/\n"
+"}\n"
+"QScrollBar::handle:vertical {	\n"
+"	background: rgb(22,160,255);\n"
+"	min-height: 25px;\n"
+"	/*border-radius: 4px*/\n"
+"}\n"
+"QScrollBar::add-line:vertical {\n"
+"	border: none;\n"
+"	background: rgb(55, 63, 77);	\n"
+"	height: 10px;\n"
+"	/*border-bottom-left-radius: 4px;\n"
+"	border-bottom-right-radius: 4px;*/\n"
+"	subcontrol-position: bottom;\n"
+"	subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::sub-line:vertical {\n"
+"	border: none;\n"
+"	background: rgb(55, 63, 77);\n"
+"	height: 10px;\n"
+"	/*border-top-left-radius: 4px;\n"
+"	border-top-right-radius: 4px;*/\n"
+"	subcontrol-position: top;\n"
+"	subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
+"	background: none;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+"	background: none;\n"
+"}")
         Addbox.setSizeGripEnabled(False)
         self.verticalLayout_3 = QVBoxLayout(Addbox)
         self.verticalLayout_3.setSpacing(0)
@@ -61,8 +101,9 @@ class Ui_Addbox(object):
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.frame_2 = QFrame(Addbox)
         self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setStyleSheet(u"/*background-color: rgb(22, 160, 255);*/\n"
-"background-color: rgb(52, 59, 72);")
+        self.frame_2.setStyleSheet(u"/*background-color: rgb(22, 160, 255)\n"
+"background-color: rgb(52, 59, 72);;*/\n"
+"background-color: rgb(15, 52, 96);")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.verticalLayout_4 = QVBoxLayout(self.frame_2)
@@ -121,17 +162,40 @@ class Ui_Addbox(object):
 
         self.contentframe = QFrame(self.frame_2)
         self.contentframe.setObjectName(u"contentframe")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.contentframe.sizePolicy().hasHeightForWidth())
+        self.contentframe.setSizePolicy(sizePolicy1)
         self.contentframe.setMinimumSize(QSize(0, 181))
-        self.contentframe.setMaximumSize(QSize(16777215, 181))
+        self.contentframe.setMaximumSize(QSize(16777215, 16777215))
         self.contentframe.setStyleSheet(u"QWidget{\n"
 "background-color: #0F111A;\n"
 "color:#8590C8;\n"
-"font: 10pt \"Segoe UI\";}")
+"font: 10pt \"Segoe UI\";}\n"
+"\n"
+"#contentframe .QPushButton {	\n"
+"	/*border: 1px solid rgb(52, 59, 72);\n"
+"	border-radius:2px;\n"
+"	color: rgb(0, 168, 204);\n"
+"	background-color: #27496D;0E161F;*/\n"
+"	background-color: rgb(26, 26, 46);\n"
+"}\n"
+"#contentframe .QPushButton:hover {\n"
+"	background-color:rgb(20, 40, 80);\n"
+"	color: rgb(0, 168, 204);\n"
+"	/*border: 2px solid rgb(61, 70, 86);*/\n"
+"	border: 1px solid #00A8CC;\n"
+"}\n"
+"#contentframe .QPushButton:pressed {	\n"
+"	background-color: #1E3250;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 1px solid rgb(22,160,255);\n"
+"}")
         self.contentframe.setFrameShape(QFrame.StyledPanel)
         self.contentframe.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.contentframe)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(-1, 0, -1, -1)
         self.instructions = QHBoxLayout()
         self.instructions.setObjectName(u"instructions")
         self.label = QLabel(self.contentframe)
@@ -145,15 +209,29 @@ class Ui_Addbox(object):
         self.analysebtn.setObjectName(u"analysebtn")
         self.analysebtn.setMinimumSize(QSize(55, 0))
         self.analysebtn.setFocusPolicy(Qt.TabFocus)
+        self.analysebtn.setStyleSheet(u"")
 
         self.instructions.addWidget(self.analysebtn)
 
 
         self.verticalLayout.addLayout(self.instructions)
 
-        self.urlbox = QLineEdit(self.contentframe)
+        self.urlbox = QPlainTextEdit(self.contentframe)
         self.urlbox.setObjectName(u"urlbox")
-        self.urlbox.setStyleSheet(u"background-color:#090B10;border:none;")
+        self.urlbox.setStyleSheet(u"\n"
+"QPlainTextEdit {\n"
+"	background-color: rgb(26, 26, 46);\n"
+"	padding:3px;\n"
+"	border:none;\n"
+"	selection-background-color: rgb(22, 160, 255);\n"
+"}\n"
+"QPlainTextEdit:hover {\n"
+"	border: 1px solid #0264AF ;\n"
+"}\n"
+"QPlainTextEdit:focus {\n"
+"	border: 1px solid #0264AF;\n"
+"}\n"
+"")
 
         self.verticalLayout.addWidget(self.urlbox)
 
@@ -184,7 +262,20 @@ class Ui_Addbox(object):
 
         self.savdirec = QLineEdit(self.contentframe)
         self.savdirec.setObjectName(u"savdirec")
-        self.savdirec.setStyleSheet(u"background-color:#090B10;border:none;")
+        self.savdirec.setStyleSheet(u"\n"
+"/*background-color:#090B10;*/\n"
+"QLineEdit {\n"
+"	background-color: rgb(26, 26, 46);\n"
+"	border:none;\n"
+"	selection-background-color: rgb(22, 160, 255);\n"
+"}\n"
+"QLineEdit:hover {\n"
+"	border: 1px solid #0264AF ;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"	border: 1px solid #0264AF ;\n"
+"}\n"
+"")
 
         self.options.addWidget(self.savdirec)
 
