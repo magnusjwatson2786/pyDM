@@ -9,7 +9,7 @@ from dlic import Dlitem
 from ui import *
 
 widgets = None
-verbose= False
+verbose= True
 
 import res_rc
 
@@ -25,6 +25,7 @@ class MainWindow(QMainWindow):
         Fxns.toggleMenu(self, True)
         Fxns.fxnsdef(self)
         
+        widgets.pushButton.clicked.connect(self.buttonClick)
         widgets.pushButton_6.clicked.connect(self.buttonClick)
         widgets.pushButton_7.clicked.connect(self.buttonClick)
         widgets.pushButton_8.clicked.connect(self.buttonClick)
@@ -45,7 +46,8 @@ class MainWindow(QMainWindow):
         self.h=[]
         self.l=[]
         self.c=0
-        self.br=False
+        self.BREAKL=False
+        self.dlpath="downloads"
         self.executor=concurrent.futures.ThreadPoolExecutor()
         self.videofiles=[".mp4",".mkv",".avi","webm",".flv",".wmv"]
         self.audiofiles=[".mp3",".wav",".aac",".opus",".flac"]
@@ -56,7 +58,6 @@ class MainWindow(QMainWindow):
         #                                 "{background-color:#0B0D16;"
         #                                 "border: 3px solid #0A0C15;}")
         
-
 
     def buttonClick(self):
         btn = self.sender()
@@ -77,7 +78,9 @@ class MainWindow(QMainWindow):
             btn.setStyleSheet(Fxns.selectMenu(btn.styleSheet()))
             widgets.label.setText("History - YTD")
 
-        if btnName == "pushButton_9":
+        if btnName == "pushButton_9" or btnName == "pushButton":
+            self.BREAKL=True
+            if verbose: print("break")
             self.close()
 
         if btnName == "pushButton_10":
@@ -100,15 +103,7 @@ class MainWindow(QMainWindow):
         # self.addDialog.show()
         # self.dialogUI.cancelbtn.clicked.connect(self.addDialog.close)
         # self.dialogUI.addbtn.clicked.connect(lambda: self.add(self.dialogUI.urlbox.toPlainText()))
-        addnew=Addfxns(myparent=self)
-
-
-    # def urlAdd(self, goturl):
-    #     if self.validateUrl(goturl):
-    #         self.add(goturl)
-    #         self.addDialog.close()
-    #     else:
-    #         if verbose: print("Invalid URL")
+        self.addnew=Addfxns(myparent=self)
 
     def validateUrl(self, url):
         regex = re.compile(
@@ -130,7 +125,8 @@ class MainWindow(QMainWindow):
         # def submitex(x):
         #     self.q[x]=Ui_Dlitem(link=goturl,lidx=x)
         # if self.validateUrl(goturl):
-        x=self.executor.submit(self.q.append,Ui_Dlitem(link=goturl,lidx=self.c))
+        downloadpath=self.addnew.getdlpath()
+        x=self.executor.submit(self.q.append,Ui_Dlitem(link=goturl,path=downloadpath,lidx=self.c))
         # x=self.executor.submit(submitex,self.c)
         # self.q.append(Ui_Dlitem(link=goturl,lidx=self.c))
         # if verbose: print("submitted")
@@ -157,12 +153,26 @@ class MainWindow(QMainWindow):
 
     def downld(self,dlclass):
         if verbose: print(dlclass.br)
+        fpath=os.path.join(str(dlclass.path),str(dlclass.filename))
+        if verbose: print(fpath)
+        dlclass.path=fpath
+
+        if dlclass.flen in range(0,(1024*1024)+1):
+            dlclass.csize=100*1024
+        elif dlclass.flen in range((1024*1024)+1,(10*1024*1024)+1):
+            dlclass.csize=512*1024
+        elif dlclass.flen in range((10*1024*1024)+1,(512*1024*1024)+1):
+            dlclass.csize=1024*1024
+        else:
+            dlclass.csize=5*1024*1024
+        if verbose: print(dlclass.csize)
+
         headers={}
         loop=1
-        if os.path.exists(str(dlclass.filename)):
+        if os.path.exists(fpath):
             if verbose: print("existing instance")
-            otf = open(str(dlclass.filename),"ab")
-            existSize = os.path.getsize(str(dlclass.filename))
+            otf = open(fpath,"ab")
+            existSize = os.path.getsize(fpath)
             sizeper=(int(existSize)/int(dlclass.flen))*100
             if verbose: print(sizeper)
             dlclass.gui_connection.signal_val.emit(sizeper)
@@ -179,7 +189,7 @@ class MainWindow(QMainWindow):
 
         # headers = {'Range': 'bytes=%d-%d' % (0, 4197044)}
         else:
-            otf = open(str(dlclass.filename),"wb")
+            otf = open(fpath,"wb")
             if verbose: print("New Download")
         self.setdlIcon(dlclass)
         if loop:
@@ -188,13 +198,16 @@ class MainWindow(QMainWindow):
                 # r = requests.get(dlclass.link, stream = True)
             except:
                 print("Oops!", sys.exc_info()[0], "Cant download")
+                otf.close()
+                # os.remove(fpath)
+                return
             else:
                 a=0
                 if verbose: print(str(dlclass.filename))
                 # with open(str(dlclass.filename),"ab") as otf:
                 for chunk in r.iter_content(chunk_size=dlclass.csize):
                     # global BREAK
-                    if dlclass.br:
+                    if dlclass.br or self.BREAKL:
                         if verbose: print("break")
                         break
                     if chunk:
@@ -215,6 +228,7 @@ class MainWindow(QMainWindow):
         dlclass.br=False
         otf.close()
         if verbose: print(f"download thread for {dlclass.filename} has been terminated")
+        return
 
     def setdlIcon(self, dlclass):
         if dlclass.filename.endswith(tuple(self.videofiles)):
