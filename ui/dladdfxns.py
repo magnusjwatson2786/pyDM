@@ -1,6 +1,6 @@
 from xt import *
 from ui.ui_dl_add import *
-import requests, sys, concurrent.futures,time, os, re, platform
+import requests, sys, os, re, errno
 DL_CUSTOM_TITLE_BAR=True
 
 class Addfxns(QDialog):
@@ -10,12 +10,16 @@ class Addfxns(QDialog):
         self.dialogUI.setupUi(self)
         self.myparent=myparent
         self.link=''
+        self.ERROR_INVALID_NAME = 123
         self.dialogUI.pushButton.clicked.connect(lambda: self.close())
         self.dialogUI.cancelbtn.clicked.connect(self.close)
         self.dialogUI.addbtn.clicked.connect(self.addclicked)
-        self.dialogUI.urlbox.textChanged.connect(self.on_lineedit)
+        self.dialogUI.browsebtn.clicked.connect(self.browse)
+        self.dialogUI.urlbox.textChanged.connect(self.on_urledit)
+        self.dialogUI.savdirec.textChanged.connect(self.on_direcedit)
         self.dialogUI.addbtn.setEnabled(False)
         self.dialogUI.analysebtn.hide()
+        self.setdefpath()
         # self.dialogUI.filename.hide()
         # self.dialogUI.flenlabel.hide()
 
@@ -43,8 +47,15 @@ class Addfxns(QDialog):
         p = event.globalPosition()
         self.dragPos = p.toPoint()
 
-    def on_lineedit(self):
-        if not self.validateUrl(self.dialogUI.urlbox.text()):
+    def setdefpath(self)->None:
+        self.dlpath=os.path.join(os.environ['USERPROFILE'],'Downloads')
+        self.dialogUI.savdirec.setText(self.dlpath)
+    
+    def getdlpath(self)->str:
+        return self.dialogUI.savdirec.text()
+
+    def on_urledit(self):
+        if not self.validateUrl(self.dialogUI.urlbox.toPlainText()):
             self.dialogUI.warning.setText("Invalid URL syntax")
             self.dialogUI.addbtn.setEnabled(False)
         else:
@@ -53,6 +64,16 @@ class Addfxns(QDialog):
             self.dialogUI.warning.setText("OK")            
             self.dialogUI.addbtn.setEnabled(True)
 
+    def on_direcedit(self):
+        if not self.is_path_exists_or_creatable(self.dialogUI.savdirec.text()):
+            self.dialogUI.warning.setText("Invalid Download Path")
+            self.dialogUI.addbtn.setEnabled(False)
+        else:
+            # self.dialogUI.warning.setText("Analysing URL")
+            # self.checkurl(self.dialogUI.urlbox.text())
+            self.dialogUI.warning.setText("OK")            
+            self.dialogUI.addbtn.setEnabled(True)
+        
 
     def validateUrl(self, url):
         regex = re.compile(
@@ -63,9 +84,9 @@ class Addfxns(QDialog):
             r'(?::\d+)?' # optional port
             r'(?:/?|[/?]\S+)$', re.IGNORECASE)
         return re.match(regex, str(url))
-    
+
     def addclicked(self):
-        self.myparent.add(self.dialogUI.urlbox.text())
+        self.myparent.add(self.dialogUI.urlbox.toPlainText())
         self.close()
 
     def checkurl(self,url):
@@ -90,3 +111,47 @@ class Addfxns(QDialog):
             temp=temp[:100]
         temp=temp.split("?")[0]
         self.dialogUI.filename.setText(temp)
+    
+    def browse(self):
+        selectedpath = str(QFileDialog.getExistingDirectory(None, "Select Directory"))
+        if selectedpath:
+            self.myparent.dlpath=selectedpath
+            self.dialogUI.savdirec.setText(self.dlpath)
+
+
+    def is_pathname_valid(self,pathname: str) -> bool:
+        try:
+            if not isinstance(pathname, str) or not pathname:
+                return False
+
+            _, pathname = os.path.splitdrive(pathname)
+
+            root_dirname = os.environ.get('HOMEDRIVE', 'C:') \
+                if sys.platform == 'win32' else os.path.sep
+            assert os.path.isdir(root_dirname) 
+            root_dirname = root_dirname.rstrip(os.path.sep) + os.path.sep
+
+            for pathname_part in pathname.split(os.path.sep):
+                try:
+                    os.lstat(root_dirname + pathname_part)
+                except OSError as exc:
+                    if hasattr(exc, 'winerror'):
+                        if exc.winerror == self.ERROR_INVALID_NAME:
+                            return False
+                    elif exc.errno in {errno.ENAMETOOLONG, errno.ERANGE}:
+                        return False
+        except TypeError as exc:
+            return False
+        else:
+            return True
+
+    def is_path_creatable(self,pathname: str) -> bool:
+        dirname = os.path.dirname(pathname) or os.getcwd()
+        return os.access(dirname, os.W_OK)
+
+    def is_path_exists_or_creatable(self,pathname: str) -> bool:
+        try:
+            return self.is_pathname_valid(pathname) and (
+                os.path.exists(pathname) or self.is_path_creatable(pathname))
+        except OSError:
+            return False
