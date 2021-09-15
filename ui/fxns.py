@@ -105,5 +105,5 @@ class Fxns(MainWindow):
 
         self.ui.pushButton_3.clicked.connect(lambda: self.showMinimized())
         self.ui.pushButton_2.clicked.connect(lambda: Fxns.maximize_restore(self))
-        self.ui.pushButton.clicked.connect(lambda: self.close())
+        # self.ui.pushButton.clicked.connect(lambda: self.close())
         self.setMinimumSize(900,600)
