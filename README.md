@@ -6,7 +6,7 @@
 </p>
 I got tired of the conventional download managers where finding one with good features, nice UI and being free of cost is impossible.
 
-So this is my attempt at a free multithreaded modern download manager. (Its not that bad)
+So this is my attempt at a free multithreaded modern download manager. (*its not that bad*)
 
 Made using Python and PySide6 
 
